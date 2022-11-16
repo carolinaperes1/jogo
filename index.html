@@ -63,22 +63,22 @@
                 para1();
             }
             if (Direcao == "direita") {
-                timer = setInterval("direita()", 15);
+                timer = setInterval("direita()", 60);
                 contador++;
             }
 
             if (Direcao == "esquerda") {
-                timer = setInterval("esquerda()", 15);
+                timer = setInterval("esquerda()", 60);
                 contador++;
             }
 
             if (Direcao == "acima") {
-                timer = setInterval("acima()", 15);
+                timer = setInterval("acima()", 60);
                 contador++;
             }
 
             if (Direcao == "baixo") {
-                timer = setInterval("baixo()", 15);
+                timer = setInterval("baixo()", 60);
                 contador++;
             }
         }
@@ -171,7 +171,7 @@
             div1.style.left = div1Left + 5;
             if (div1Left >= fundoWidth - div1Width) {
                 clearInterval(timer);
-                timer = setInterval("esquerda()", 15);
+                timer = setInterval("esquerda()", 60);
             }
         }
 
@@ -181,7 +181,7 @@
             div1.style.left = div1Left - 5;
             if (div1Left <= 0) {
                 clearInterval(timer);
-                timer = setInterval("direita()", 15);
+                timer = setInterval("direita()", 60);
             }
         }
 
@@ -193,7 +193,7 @@
             div1.style.top = div1Top + 5;
             if (div1Top >= fundoHeight - div1Height) {
                 clearInterval(timer);
-                timer = setInterval("acima()", 15);
+                timer = setInterval("acima()", 60);
             }
         }
         function acima() {
@@ -202,7 +202,7 @@
             div1.style.top = div1Top - 5;
             if (div1Top <= 0) {
                 clearInterval(timer);
-                timer = setInterval("baixo()", 15);
+                timer = setInterval("baixo()", 60);
             }
         }
 
