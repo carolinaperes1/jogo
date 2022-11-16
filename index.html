@@ -19,7 +19,7 @@
     }
   </script>
 
-<body>
+<body id="body">
 
 
 
@@ -49,10 +49,18 @@
         
         </div>
         <div class="painel">
-            <button type="button" id="acima"><img src="img/cima.png" alt="" width="70" height="50"></button>
+            <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="70" height="50"></button>
             <button type="button" id="esquerda"><img src="img/esquerda.png" alt="" width="70" height="50"></button>
             <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button>
             <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="70" height="50"></button><br>
+            <button type="button" id="cor" />Muda a cor</button>
+            <button type="button" id="mudarpersonagem" />mudar personagem</button>
+     
+         
+
+         
+       
+
         </div>
     </div>
     <script>
@@ -232,6 +240,47 @@
         }
 
 
+        //Funcao da cor 
+
+        	function cor() {
+                    if (cont == 0) {
+                        document.getElementById("body").style.backgroundColor = "purple";
+                        cont++;
+                    } else {
+                        if (cont == 1) {
+                            document.getElementById("body").style.backgroundColor = "black";
+                            cont++;
+                        } else {
+                            if (cont == 2) {
+                                document.getElementById("body").style.backgroundColor = "red";
+                                cont = 0;
+                            }
+                        }
+                    }
+
+                }
+   
+
+       function mudarpersonagem() {
+            if (cont == 0) {
+                document.getElementById("div1").style.backgroundImage= "url('img/ligeirinho.png')";
+                cont++;
+            } else {
+                if (cont == 1) {
+                  document.getElementById("div1").style.backgroundImage = "url('img/jerry1.png')";
+                    cont++;
+                } else {
+                    if (cont == 2) {
+                       document.getElementById("div1").style.backgroundImage = "url('img/jerry.png')";
+                        cont = 0;
+                    }
+                }
+            }
+
+        }
+    
+       
+
         function colisao() {
             let div1Left = parseInt(getComputedStyle(div1).left);
             let div1Top = parseInt(getComputedStyle(div1).top);
@@ -402,7 +451,13 @@
         document.querySelector("#direita").addEventListener("click", () => { move('direita') });
         document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
+        document.querySelector("#cor").addEventListener("click", () => { cor() });
+        document.querySelector("#mudarpersonagem").addEventListener("click", () => { mudarpersonagem() });
+     
+       
+   
 
+   
     </script>
 </body>
 
