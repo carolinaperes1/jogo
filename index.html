@@ -55,6 +55,8 @@
             <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="70" height="50"></button><br>
             <button type="button" id="cor" />Muda a cor</button>
             <button type="button" id="mudarpersonagem" />mudar personagem</button>
+            <button type="button" id="rapido" />velocidade rapida</button>
+            <button type="button" id="lenta" />velocidade lenta</button>
      
          
 
@@ -92,6 +94,7 @@
             }
         }
 
+        
         //Mover obstáculos - automaticamente
 
         function moverbaixo3() {
@@ -164,7 +167,7 @@
                     tom4 = document.createElement("div");
                     tom4.setAttribute("id", "div8");
                     fundo.appendChild(tom4);
-                    tom4 = setInterval("moverbaixo8()", 30);
+                    tom4 = setInterval("moverbaixo8()", velocidade);
 
                 }
             }
@@ -279,7 +282,22 @@
 
         }
     
+        function lenta(){
+            localStorage.setItem("velocidade","100")
+            velocidade = localStorage.getItem("velocidade");
+            clearInterval(tom4);
+              tom4 = setInterval("moverbaixo8()", velocidade);
+
+        }
        
+        function rapido() {
+              localStorage.setItem("velocidade", "10")
+            velocidade = localStorage.getItem("velocidade");
+                clearInterval(tom4);
+                tom4 = setInterval("moverbaixo8()", velocidade);
+
+            }
+
 
         function colisao() {
             let div1Left = parseInt(getComputedStyle(div1).left);
@@ -440,10 +458,15 @@
         //Ao carregar a página estas linhas são executadas. 
         let contador = 0;
         let cont = 0;
+        let velocidade = 30
         let tom = setInterval("moverbaixo3()", 70);
         let tom2 = setInterval("moverbaixo5()", 40);
         let tom3 = setInterval("moverbaixo6()", 50);
-        let tom4 = setInterval("moverbaixo8()", 30);
+        velocidade = localStorage.getItem("velocidade");
+        if(velocidade===null){
+                localStorage.setItem("velocidade", "100")
+            velocidade=100}
+        let tom4 = setInterval("moverbaixo8()", velocidade);
         let n = setInterval("colisao()", 15);
 
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
@@ -453,6 +476,8 @@
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
         document.querySelector("#cor").addEventListener("click", () => { cor() });
         document.querySelector("#mudarpersonagem").addEventListener("click", () => { mudarpersonagem() });
+        document.querySelector("#rapido").addEventListener("click", () => { rapido() });
+        document.querySelector("#lenta").addEventListener("click", () => { lenta() });
      
        
    
