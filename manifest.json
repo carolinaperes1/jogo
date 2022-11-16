@@ -1,6 +1,6 @@
 {
-    "short_name": "sol",
-"name": "sol",
+    "short_name": "game",
+"name": "game",
 "lang": "pt-br",
 "description": "Site de exemplo do PWA",
 "start_url": "./index.html",
