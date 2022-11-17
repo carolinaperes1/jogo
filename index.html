@@ -20,7 +20,7 @@
   </script>
 
 <body id="body">
-
+    
 
 
 
@@ -32,8 +32,7 @@
         </div>
         <div id="div3">
 
-        </div>
-        <div id="div5">
+    
 
         </div>
 
@@ -48,16 +47,18 @@
         <div id="div8">
         
         </div>
+        <div id="result"></div>
         <div class="painel">
-            <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="70" height="50"></button>
+            <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="70" height="50"></button><br>
             <button type="button" id="esquerda"><img src="img/esquerda.png" alt="" width="70" height="50"></button>
-            <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button>
+            <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button><br>
             <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="70" height="50"></button><br>
-            <button type="button" id="cor" />Muda a cor</button>
-            <button type="button" id="mudarpersonagem" />mudar personagem</button>
-            <button type="button" id="rapido" />velocidade rapida</button>
-            <button type="button" id="lenta" />velocidade lenta</button>
-     
+            <input type="color" id="colorID" oninput="mudarCor()">
+            <button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button><br>
+            <button type="button" id="rapido" />Velocidade rápida</button>
+            <button type="button" id="lenta" />Velocidade lenta</button>
+            <div class="container">
+                
          
 
          
@@ -74,22 +75,22 @@
                 para1();
             }
             if (Direcao == "direita") {
-                timer = setInterval("direita()", 60);
+                timer = setInterval("direita()", 20);
                 contador++;
             }
 
             if (Direcao == "esquerda") {
-                timer = setInterval("esquerda()", 60);
+                timer = setInterval("esquerda()", 20);
                 contador++;
             }
 
             if (Direcao == "acima") {
-                timer = setInterval("acima()", 60);
+                timer = setInterval("acima()", 20);
                 contador++;
             }
 
             if (Direcao == "baixo") {
-                timer = setInterval("baixo()", 60);
+                timer = setInterval("baixo()", 20);
                 contador++;
             }
         }
@@ -111,7 +112,7 @@
                 d = document.createElement("div");
                 d.setAttribute("id", "div3");
                 fundo.appendChild(d);
-                tom = setInterval("moverbaixo3()", 70);
+                tom = setInterval("moverbaixo3()", 80);
 
             }
         }
@@ -119,22 +120,7 @@
 
 
 
-        function moverbaixo5() {
-            let div5Top = parseInt(getComputedStyle(div5).top);
-            let fundoHeight = parseInt(getComputedStyle(fundo).height);
-            let div5Height = parseInt(getComputedStyle(div5).height);
-
-            div5.style.top = div5Top + 5;
-            if (div5Top >= fundoHeight - div5Height) {
-                clearInterval(tom2);
-                fundo.removeChild(div5);
-                tom2 = document.createElement("div");
-                tom2.setAttribute("id", "div5");
-                fundo.appendChild(tom2);
-                tom2 = setInterval("moverbaixo5()", 40);
-
-            }
-        }
+       
 
         function moverbaixo6() {
             let div6Top = parseInt(getComputedStyle(div6).top);
@@ -149,7 +135,7 @@
                 tom3 = document.createElement("div");
                 tom3.setAttribute("id", "div6");
                 fundo.appendChild(tom3);
-                tom3 = setInterval("moverbaixo6()", 50);
+                tom3 = setInterval("moverbaixo6()", 90);
 
             }
         }
@@ -183,7 +169,7 @@
             div1.style.left = div1Left + 5;
             if (div1Left >= fundoWidth - div1Width) {
                 clearInterval(timer);
-                timer = setInterval("esquerda()", 60);
+                timer = setInterval("esquerda()", 40);
             }
         }
 
@@ -193,7 +179,7 @@
             div1.style.left = div1Left - 5;
             if (div1Left <= 0) {
                 clearInterval(timer);
-                timer = setInterval("direita()", 60);
+                timer = setInterval("direita()", 40);
             }
         }
 
@@ -205,7 +191,7 @@
             div1.style.top = div1Top + 5;
             if (div1Top >= fundoHeight - div1Height) {
                 clearInterval(timer);
-                timer = setInterval("acima()", 60);
+                timer = setInterval("acima()", 40);
             }
         }
         function acima() {
@@ -214,7 +200,7 @@
             div1.style.top = div1Top - 5;
             if (div1Top <= 0) {
                 clearInterval(timer);
-                timer = setInterval("baixo()", 60);
+                timer = setInterval("baixo()", 40);
             }
         }
 
@@ -224,63 +210,44 @@
         clearInterval(timer)
 
     }
-        function pontuar() {
-            alert("Parabéns! você pegou o queijo");
-        }
 
+    result=document.querySelector('#result');
+  function pontuar() {
+      pontos++
+    clearInterval(div1);
+                fundo.removeChild(div1);
+                div1 = document.createElement("div1");
+                div1.setAttribute("id", "div1");
+                fundo.appendChild(div1);
+    result.innerHTML =pontos;
+        }
         function alertar()
-        {
-            alert("Você matou o rato!")
+        {clearInterval(div1);
+                fundo.removeChild(div1);
+                div1 = document.createElement("div1");
+                div1.setAttribute("id", "div1");
+                fundo.appendChild(div1);
+          result.innerHTML ="Você matou o rato!";
         }
 
-        //Parametro do personagem
-        function altura(parametro) {
-            div1.style.height = parseInt(getComputedStyle(div1).height) + parametro;
-        }
 
-        function largura(parametro) {
-            div1.style.width = parseInt(getComputedStyle(div1).width) + parametro;
-        }
+     
+        
 
 
         //Funcao da cor 
 
-        	function cor() {
-                    if (cont == 0) {
-                        document.getElementById("body").style.backgroundColor = "purple";
-                        cont++;
-                    } else {
-                        if (cont == 1) {
-                            document.getElementById("body").style.backgroundColor = "black";
-                            cont++;
-                        } else {
-                            if (cont == 2) {
-                                document.getElementById("body").style.backgroundColor = "red";
-                                cont = 0;
-                            }
-                        }
-                    }
-
-                }
+        function mudarCor() { 
+  var userColor = document.getElementById('colorID').value;
+  localStorage.setItem('storedValue', document.body.style.backgroundColor = userColor);
+}
+if(localStorage.storedValue) {
+  document.getElementById('colorID').value = localStorage.storedValue;
+  document.body.style.backgroundColor      = localStorage.storedValue;
+}
    
 
-       function mudarpersonagem() {
-            if (cont == 0) {
-                document.getElementById("div1").style.backgroundImage= "url('img/ligeirinho.png')";
-                cont++;
-            } else {
-                if (cont == 1) {
-                  document.getElementById("div1").style.backgroundImage = "url('img/jerry1.png')";
-                    cont++;
-                } else {
-                    if (cont == 2) {
-                       document.getElementById("div1").style.backgroundImage = "url('img/jerry.png')";
-                        cont = 0;
-                    }
-                }
-            }
-
-        }
+     
     
         function lenta(){
             localStorage.setItem("velocidade","100")
@@ -291,7 +258,7 @@
         }
        
         function rapido() {
-              localStorage.setItem("velocidade", "10")
+              localStorage.setItem("velocidade", "20")
             velocidade = localStorage.getItem("velocidade");
                 clearInterval(tom4);
                 tom4 = setInterval("moverbaixo8()", velocidade);
@@ -309,11 +276,6 @@
             let div3Top = parseInt(getComputedStyle(div3).top);
             let div3Height = parseInt(getComputedStyle(div3).height);
             let div3Width = parseInt(getComputedStyle(div3).width);
-
-            let div5Left = parseInt(getComputedStyle(div5).left);
-            let div5Top = parseInt(getComputedStyle(div5).top);
-            let div5Height = parseInt(getComputedStyle(div5).height);
-            let div5Width = parseInt(getComputedStyle(div5).width);
 
 
             let div6Left = parseInt(getComputedStyle(div6).left);
@@ -358,28 +320,7 @@
                 alertar();
             }
 
-            if (((div1Left >= div5Left) && (div1Left <= div5Left + div5Width)) &&
-                ((div1Top >= div5Top) && (div1Top <= div5Top + div5Height))) {
-                para1();
-                clearInterval(tom);
-                clearInterval(tom2);
-                clearInterval(tom3);
-                clearInterval(tom4);
-                clearInterval(n);
-                alertar();
-
-            }
-            if (((div5Left >= div1Left) && (div5Left <= div1Left + div1Width)) &&
-                ((div5Top >= div1Top) && (div5sTop <= div1Top + div1Height))) {
-                para1();
-                clearInterval(tom);
-                clearInterval(tom2);
-                clearInterval(tom3);
-                clearInterval(tom4);
-                clearInterval(n);
-                alertar();
-
-            }
+        
 
             if (((div1Left >= div6Left) && (div1Left <= div6Left + div6Width)) &&
                 ((div1Top >= div6Top) && (div1Top <= div6Top + div6Height))) {
@@ -429,34 +370,28 @@
                 ((div1Top >= div7Top) && (div1Top <= div7Top + div7Height))) {
                 pontuar();
                 para1();
-                clearInterval(tom);
-                clearInterval(tom2);
-                clearInterval(tom3);
-                clearInterval(tom4);
-                clearInterval(n);
+                
 
             }
             if (((div7Left >= div1Left) && (div7Left <= div1Left + div1Width)) &&
                 ((div7Top >= div1Top) && (div7Top <= div1Top + div1Height))) {
                 pontuar();
                 para1();
-                clearInterval(tom);
-                clearInterval(tom2);
-                clearInterval(tom3);
-                clearInterval(tom4);
-                clearInterval(n);
+                
 
             }
 
         }
 
-
+       
 
 
 
 
         //Ao carregar a página estas linhas são executadas. 
         let contador = 0;
+        var audioloop = new Audio("audiojg.mp3");
+        let pontos = 0
         let cont = 0;
         let velocidade = 30
         let tom = setInterval("moverbaixo3()", 70);
@@ -474,10 +409,9 @@
         document.querySelector("#direita").addEventListener("click", () => { move('direita') });
         document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
-        document.querySelector("#cor").addEventListener("click", () => { cor() });
-        document.querySelector("#mudarpersonagem").addEventListener("click", () => { mudarpersonagem() });
         document.querySelector("#rapido").addEventListener("click", () => { rapido() });
         document.querySelector("#lenta").addEventListener("click", () => { lenta() });
+        document.querySelector("#song").addEventListener("click", ()=>{musica()});
      
        
    
