@@ -54,9 +54,9 @@
             <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button><br>
             <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="70" height="50"></button><br>
             <input type="color" id="colorID" oninput="mudarCor()">
-            <button type="button"  id="song"  ><img src="img/song.png" alt="song" width="40vw" height="40vh"></button><br>
-            <button type="button" id="rapido" />Velocidade rápida</button>
-            <button type="button" id="lenta" />Velocidade lenta</button>
+            <button type="button"  id="musica"  ><img src="img/song.png" alt="musica" width="40vw" height="40vh"></button><br>
+            <button type="button" id="rapido"/>Modo difícil</button>
+            <button type="button" id="lenta"/>Modo fácil</button>
             <div class="container">
                 
          
@@ -112,7 +112,7 @@
                 d = document.createElement("div");
                 d.setAttribute("id", "div3");
                 fundo.appendChild(d);
-                tom = setInterval("moverbaixo3()", 80);
+                tom = setInterval("moverbaixo3()", 40);
 
             }
         }
@@ -135,7 +135,7 @@
                 tom3 = document.createElement("div");
                 tom3.setAttribute("id", "div6");
                 fundo.appendChild(tom3);
-                tom3 = setInterval("moverbaixo6()", 90);
+                tom3 = setInterval("moverbaixo6()", velocidade);
 
             }
         }
@@ -254,6 +254,8 @@ if(localStorage.storedValue) {
             velocidade = localStorage.getItem("velocidade");
             clearInterval(tom4);
               tom4 = setInterval("moverbaixo8()", velocidade);
+              clearInterval(tom3);
+              tom3 = setInterval("moverbaixo6()", velocidade);
 
         }
        
@@ -262,6 +264,10 @@ if(localStorage.storedValue) {
             velocidade = localStorage.getItem("velocidade");
                 clearInterval(tom4);
                 tom4 = setInterval("moverbaixo8()", velocidade);
+                clearInterval(tom);
+                tom = setInterval("moverbaixo3()", velocidade);
+                clearInterval(tom3);
+                tom3 = setInterval("moverbaixo6()", velocidade);
 
             }
 
@@ -303,7 +309,6 @@ if(localStorage.storedValue) {
                 ((div1Top >= div3Top) && (div1Top <= div3Top + div3Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -313,7 +318,6 @@ if(localStorage.storedValue) {
                 ((div3Top >= div1Top) && (div3Top <= div1Top + div1Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -326,7 +330,6 @@ if(localStorage.storedValue) {
                 ((div1Top >= div6Top) && (div1Top <= div6Top + div6Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -336,7 +339,6 @@ if(localStorage.storedValue) {
                 ((div6Top >= div1Top) && (div6Top <= div1Top + div1Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -347,7 +349,6 @@ if(localStorage.storedValue) {
                 ((div1Top >= div8Top) && (div1Top <= div8Top + div8Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -358,7 +359,6 @@ if(localStorage.storedValue) {
                 ((div8Top >= div1Top) && (div8Top <= div1Top + div1Height))) {
                 para1();
                 clearInterval(tom);
-                clearInterval(tom2);
                 clearInterval(tom3);
                 clearInterval(tom4);
                 clearInterval(n);
@@ -382,25 +382,28 @@ if(localStorage.storedValue) {
             }
 
         }
+    
+        var audioloop = new Audio("som/abertura.mp3")
+        function musica() {
+					audioloop.play();
+				}
 
-       
 
 
 
 
         //Ao carregar a página estas linhas são executadas. 
         let contador = 0;
-        var audioloop = new Audio("audiojg.mp3");
+    
         let pontos = 0
         let cont = 0;
+        let tom = setInterval("moverbaixo3()", 40);
         let velocidade = 30
-        let tom = setInterval("moverbaixo3()", 70);
-        let tom2 = setInterval("moverbaixo5()", 40);
-        let tom3 = setInterval("moverbaixo6()", 50);
         velocidade = localStorage.getItem("velocidade");
         if(velocidade===null){
                 localStorage.setItem("velocidade", "100")
             velocidade=100}
+        let tom3 = setInterval("moverbaixo6()", velocidade);
         let tom4 = setInterval("moverbaixo8()", velocidade);
         let n = setInterval("colisao()", 15);
 
@@ -411,7 +414,7 @@ if(localStorage.storedValue) {
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
         document.querySelector("#rapido").addEventListener("click", () => { rapido() });
         document.querySelector("#lenta").addEventListener("click", () => { lenta() });
-        document.querySelector("#song").addEventListener("click", ()=>{musica()});
+        document.querySelector("#musica").addEventListener("click", ()=>{musica()});
      
        
    
