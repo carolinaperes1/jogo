@@ -21,12 +21,12 @@
 
 <body id="body">
     
-
+    <div id ="instrucao"></div>
 
 
     <div class="fundo" id="fundo">
-
-
+        
+  
         <div id="div1">
 
         </div>
@@ -49,6 +49,8 @@
         </div>
         <div id="result"></div>
         <div class="painel">
+            <button type="button" id="instrucoes">Instruções</button><br>
+            <button type="button" id="iniciar">Iniciar</button><br>
             <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="70" height="50"></button><br>
             <button type="button" id="esquerda"><img src="img/esquerda.png" alt="" width="70" height="50"></button>
             <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button><br>
@@ -114,8 +116,8 @@
                 fundo.appendChild(d);
                 tom = setInterval("moverbaixo3()", 40);
 
-            }
-        }
+            }}
+        
 
 
 
@@ -158,8 +160,6 @@
                 }
             }
 
-
-    
 
         function direita() {
             let div1Left = parseInt(getComputedStyle(div1).left);
@@ -212,6 +212,7 @@
     }
 
     result=document.querySelector('#result');
+    instrucao=document.querySelector('#instrucao');
   function pontuar() {
       pontos++
     clearInterval(div1);
@@ -229,8 +230,12 @@
                 fundo.appendChild(div1);
           result.innerHTML ="Você matou o rato!";
         }
+        function instrucoes(){instrucao.innerHTML ="O jogo consiste em capturar o queijo sem ser pego pelo rato!";
+                           
+        }
 
 
+    
      
         
 
@@ -389,23 +394,31 @@ if(localStorage.storedValue) {
 				}
 
 
-
-
-
         //Ao carregar a página estas linhas são executadas. 
         let contador = 0;
-    
         let pontos = 0
         let cont = 0;
-        let tom = setInterval("moverbaixo3()", 40);
+       
         let velocidade = 30
         velocidade = localStorage.getItem("velocidade");
         if(velocidade===null){
-                localStorage.setItem("velocidade", "100")
+               localStorage.setItem("velocidade", "100")
             velocidade=100}
-        let tom3 = setInterval("moverbaixo6()", velocidade);
-        let tom4 = setInterval("moverbaixo8()", velocidade);
-        let n = setInterval("colisao()", 15);
+    
+            
+         function iniciar(){
+          tom = setInterval("moverbaixo3()", 40);
+	   	  tom3 = setInterval("moverbaixo6()", velocidade); 
+		  tom4 = setInterval("moverbaixo8()", velocidade);
+		  n = setInterval("colisao()", 15);
+    }
+
+
+		  //let timer = setInterval(console.log(),1000);
+			
+			///let tom3,tom4,tom,n;
+
+        
 
         document.querySelector("#acima").addEventListener("click", () => { move('acima') });
         document.querySelector("#esquerda").addEventListener("click", () => { move('esquerda') });
@@ -415,6 +428,9 @@ if(localStorage.storedValue) {
         document.querySelector("#rapido").addEventListener("click", () => { rapido() });
         document.querySelector("#lenta").addEventListener("click", () => { lenta() });
         document.querySelector("#musica").addEventListener("click", ()=>{musica()});
+        document.querySelector("#instrucoes").addEventListener("click", ()=>{instrucoes()});
+        document.querySelector("#iniciar").addEventListener("click", ()=>{iniciar()});
+    
      
        
    
