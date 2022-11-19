@@ -20,13 +20,14 @@
   </script>
 
 <body id="body">
+   
     
     <div id ="instrucao"></div>
 
 
     <div class="fundo" id="fundo">
         
-  
+        
         <div id="div1">
 
         </div>
@@ -45,20 +46,27 @@
         </div>
 
         <div id="div8">
-        
+    
         </div>
         <div id="result"></div>
         <div class="painel">
+            <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="20" height="15"></button><br>
+            <button type="button" id="esquerda"><img src="img/esquerda.png" alt="" width="20" height="15"></button>
+            <button type="button" id="direita"><img src="img/direita.png" alt="" width="20" height="15"></button><br>
+            <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="20" height="15"></button><br>
+        </div>
+       
+       
+            <div class="painel2">
+        
             <button type="button" id="instrucoes">Instruções</button><br>
             <button type="button" id="iniciar">Iniciar</button><br>
-            <button type="button" id="acima"><img id ="oi"src="img/cima.png" alt="" width="70" height="50"></button><br>
-            <button type="button" id="esquerda"><img src="img/esquerda.png" alt="" width="70" height="50"></button>
-            <button type="button" id="direita"><img src="img/direita.png" alt="" width="70" height="50"></button><br>
-            <button type="button" id="baixo"><img src="img/baixo.png" alt="" width="70" height="50"></button><br>
             <input type="color" id="colorID" oninput="mudarCor()">
-            <button type="button"  id="musica"  ><img src="img/song.png" alt="musica" width="40vw" height="40vh"></button><br>
             <button type="button" id="rapido"/>Modo difícil</button>
-            <button type="button" id="lenta"/>Modo fácil</button>
+            <button type="button" id="lenta"/>Modo fácil</button> 
+           <button type="button"  id="musica"  ><img src="img/song.png" alt="musica" width="40vw" height="40vh"></button><br>
+
+            </div>
             <div class="container">
                 
          
@@ -230,7 +238,7 @@
                 fundo.appendChild(div1);
           result.innerHTML ="Você matou o rato!";
         }
-        function instrucoes(){instrucao.innerHTML ="O jogo consiste em capturar o queijo sem ser pego pelo rato!";
+        function instrucoes(){instrucao.innerHTML ="Capture o queijo sem ser pego pelo rato!";
                            
         }
 
