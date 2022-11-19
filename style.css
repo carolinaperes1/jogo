@@ -12,14 +12,7 @@ border: 10px solid rgb(170, 255, 170);
 padding: 5px;
   }   
 
-.acima{top: 0vw;
-   left: 15vw; }
-#esquerda{top: 0vw;
-   left: 15vw; }
-#direita{top: 0vw;
-   left: 15vw; }
-#baixo{top: 0vw;
-   left: 15vw; }
+
 #result{
 background-color: rgb(170, 255, 170);
 }
